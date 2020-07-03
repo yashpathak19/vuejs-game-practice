@@ -16,17 +16,19 @@
 			v-for="orb in orbs"
 			v-bind:radius="orb.radius"
 			v-bind:color="orb.color"
-			v-bind:key="orb.id">
+			v-bind:key="orb.id"
+			v-bind:x="orb.x"
+			v-bind:y="orb.y">
 		</orb>
 	</div>
 	
 	<script>
 	Vue.component('orb',{
-		props:['radius','color'],	
+		props:['radius','color', 'x', 'y'],	
 		template:
 		`<span 
 			v-bind:class="'circle'" 
-			v-bind:style="{'width':radius+'px', 'height':radius+'px', 'background':color}"
+			v-bind:style="{'width':radius+'px', 'height':radius+'px', 'background':color, 'top':x+'px', 'right':y+'px', 'position': 'absolute'}"
 			v-on:click="prompt();">
 		</span>`,
 		methods:{
@@ -43,13 +45,13 @@
 		
 		data:{
 			orbs:[
-				{id:1, radius:10, color:'green'},
-				{id:2, radius:15, color:'purple'},
-				{id:3, radius:20, color:'black'},
-				{id:4, radius:25, color:'blue'},
-				{id:5, radius:30, color:'orange'},
-				{id:6, radius:35, color:'yellow'},
-				{id:7, radius:45, color:'red'}
+				{id:1, radius:10, color:'green', x: 60, y:240},
+				{id:2, radius:15, color:'purple', x: 130, y:180},
+				{id:3, radius:20, color:'black', x: 500, y:800},
+				{id:4, radius:25, color:'blue', x: 300, y:600},
+				{id:5, radius:30, color:'orange', x: 240, y:100},
+				{id:6, radius:35, color:'yellow', x: 500, y:750},
+				{id:7, radius:45, color:'red', x: 650, y:900}
 			]
 		},
 		
